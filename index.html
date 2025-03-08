@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GBI Empang Tiga - Gereja Bethel Indonesia</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.3/cdn.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#1E40AF',
+                        accent: '#DBEAFE',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            }
+            .transition-navbar {
+                transition: background-color 0.3s ease;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50">
+    <!-- Navbar -->
+    <header x-data="{ open: false, scrolled: false }" @scroll.window="scrolled = window.pageYOffset > 50" :class="{ 'bg-white shadow-md': scrolled, 'bg-transparent': !scrolled }" class="fixed w-full z-50 transition-navbar">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <a href="#" class="flex-shrink-0 flex items-center">
+                        <span class="text-2xl font-bold" :class="{ 'text-primary': scrolled, 'text-white text-shadow': !scrolled }">GBI Empang Tiga</span>
+                    </a>
+                </div>
+                <div class="hidden md:ml-6 md:flex md:items-center md:space-x-4">
+                    <a href="#beranda" :class="{ 'text-gray-700 hover:text-primary': scrolled, 'text-white hover:text-accent': !scrolled }" class="px-3 py-2 rounded-md text-sm font-medium">Beranda</a>
+                    <a href="#tentang-kami" :class="{ 'text-gray-700 hover:text-primary': scrolled, 'text-white hover:text-accent': !scrolled }" class="px-3 py-2 rounded-md text-sm font-medium">Tentang Kami</a>
+                    <a href="#jadwal-ibadah" :class="{ 'text-gray-700 hover:text-primary': scrolled, 'text-white hover:text-accent': !scrolled }" class="px-3 py-2 rounded-md text-sm font-medium">Jadwal Ibadah</a>
+                    <a href="#kegiatan" :class="{ 'text-gray-700 hover:text-primary': scrolled, 'text-white hover:text-accent': !scrolled }" class="px-3 py-2 rounded-md text-sm font-medium">Kegiatan</a>
+                    <a href="#galeri" :class="{ 'text-gray-700 hover:text-primary': scrolled, 'text-white hover:text-accent': !scrolled }" class="px-3 py-2 rounded-md text-sm font-medium">Galeri</a>
+                    <a href="#kontak" :class="{ 'text-gray-700 hover:text-primary': scrolled, 'text-white hover:text-accent': !scrolled }" class="px-3 py-2 rounded-md text-sm font-medium">Kontak</a>
+                </div>
+                <div class="-mr-2 flex items-center md:hidden">
+                    <button @click="open = !open" type="button" class="inline-flex items-center justify-center p-2 rounded-md" :class="{ 'text-gray-700 hover:text-primary': scrolled, 'text-white hover:text-accent': !scrolled }" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Buka menu utama</span>
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div x-show="open" class="md:hidden bg-white shadow-lg" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#beranda" class="text-gray-700 hover:text-primary block px-3 py-2 rounded-md text-base font-medium">Beranda</a>
+                <a href="#tentang-kami" class="text-gray-700 hover:text-primary block px-3 py-2 rounded-md text-base font-medium">Tentang Kami</a>
+                <a href="#jadwal-ibadah" class="text-gray-700 hover:text-primary block px-3 py-2 rounded-md text-base font-medium">Jadwal Ibadah</a>
+                <a href="#kegiatan" class="text-gray-700 hover:text-primary block px-3 py-2 rounded-md text-base font-medium">Kegiatan</a>
+                <a href="#galeri" class="text-gray-700 hover:text-primary block px-3 py-2 rounded-md text-base font-medium">Galeri</a>
+                <a href="#kontak" class="text-gray-700 hover:text-primary block px-3 py-2 rounded-md text-base font-medium">Kontak</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="relative h-screen flex items-center">
+        <div class="absolute inset-0 w-full h-full bg-black opacity-50 z-10"></div>
+        <div class="absolute inset-0 w-full h-full bg-gradient-to-r from-blue-900/60 to-indigo-900/60 z-20"></div>
+        <!-- <img src="/api/placeholder/1920/1080" alt="Gedung Gereja GBI Empang Tiga" class="absolute inset-0 w-full h-full object-cover"> -->
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-30">
+            <div class="text-center md:text-left md:max-w-xl">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight mb-6">
+                    Selamat Datang di <br>GBI Empang Tiga
+                </h1>
+                <p class="text-xl md:text-2xl text-white/90 mb-10">
+                    "Karena begitu besar kasih Allah akan dunia ini, sehingga Ia telah mengaruniakan Anak-Nya yang tunggal, supaya setiap orang yang percaya kepada-Nya tidak binasa, melainkan beroleh hidup yang kekal."
+                </p>
+                <p class="text-white/80 italic mb-8">— Yohanes 3:16</p>
+                <div class="flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#jadwal-ibadah" class="px-8 py-3 bg-primary hover:bg-secondary text-white font-semibold rounded-lg transition duration-300 text-center">
+                        Jadwal Ibadah
+                    </a>
+                    <a href="#kontak" class="px-8 py-3 bg-white/20 hover:bg-white/30 text-white border border-white/30 font-semibold rounded-lg transition duration-300 text-center backdrop-blur-sm">
+                        Hubungi Kami
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tentang Kami Section -->
+    <section id="tentang-kami" class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Tentang GBI Empang Tiga</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Melayani dengan kasih dan membawa kabar baik kepada semua orang.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img src="https://picsum.photos/600/400" alt="Sejarah GBI Empang Tiga" class="rounded-lg shadow-lg w-full h-auto">
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Sejarah Kami</h3>
+                    <p class="text-gray-600 mb-6">
+                        GBI Empang Tiga didirikan pada tanggal 9 November 2009. Saat itu jumlah jemaat sekitar 23 orang. Ibadah diadakan 1x sehari setiap minggu sore pukul 16:00. dengan visi untuk melayani masyarakat sekitar Empang Tiga. Diawali dengan sekelompok kecil jemaat yang berkumpul di rumah salah satu anggota, gereja ini terus bertumbuh dan menjadi berkat bagi banyak orang.
+                    </p>
+                    <p class="text-gray-600 mb-6">
+                        Pada tahun 2025, dengan pertumbuhan jemaat yang semakin banyak, kami membangun gedung gereja yang baru dan lebih besar untuk mengakomodasi kebutuhan jemaat. Hingga saat ini, GBI Empang Tiga terus melayani dengan setia dan menjangkau lebih banyak jiwa untuk Kristus.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 md:gap-6">
+                        <div class="bg-gray-50 p-5 rounded-lg">
+                            <h4 class="text-primary font-bold text-xl mb-2">Visi</h4>
+                            <p class="text-gray-600">Menjadi gereja yang membawa pemulihan dan transformasi dalam masyarakat.</p>
+                        </div>
+                        <div class="bg-gray-50 p-5 rounded-lg">
+                            <h4 class="text-primary font-bold text-xl mb-2">Misi</h4>
+                            <p class="text-gray-600">Menjangkau, Memulihkan, Memuridkan, dan Mengutus.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pengurus Gereja Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Pengurus Gereja</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Kenali para pemimpin yang melayani di GBI Empang Tiga.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <!-- Gembala Sidang -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition duration-300 hover:shadow-xl text-center">
+                    <div class="relative">
+                        <img src="https://picsum.photos/400/400" alt="Pak Daniel" class="w-full h-80 object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-6">
+                            <h3 class="text-xl font-bold text-white mb-1">Pak Daniel</h3>
+                            <p class="text-primary bg-white/10 backdrop-blur-sm inline-block px-3 py-1 rounded-full text-sm">Gembala Sidang</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600">Melayani sebagai Gembala Sidang sejak 2009. Memiliki visi untuk membangun jemaat yang kuat dalam iman dan melayani masyarakat dengan kasih Kristus.</p>
+                    </div>
+                </div>
+                
+                <!-- Wakil Gembala -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition duration-300 hover:shadow-xl text-center">
+                    <div class="relative">
+                        <img src="https://picsum.photos/400/400" alt="Pak Andy" class="w-full h-80 object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-6">
+                            <h3 class="text-xl font-bold text-white mb-1">Pak Andy</h3>
+                            <p class="text-primary bg-white/10 backdrop-blur-sm inline-block px-3 py-1 rounded-full text-sm">Wakil Gembala</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600">Fokus dalam pelayanan wanita dan keluarga. Membimbing jemaat untuk bertumbuh dalam kehidupan rohani dan membangun rumah tangga yang sehat.</p>
+                    </div>
+                </div>
+                
+                <!-- Sekretaris Gereja -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden transition duration-300 hover:shadow-xl text-center">
+                    <div class="relative">
+                        <img src="https://picsum.photos/400/400" alt="Pak Dede" class="w-full h-80 object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-6">
+                            <h3 class="text-xl font-bold text-white mb-1">Pak Dede</h3>
+                            <p class="text-primary bg-white/10 backdrop-blur-sm inline-block px-3 py-1 rounded-full text-sm">Sekretaris Gereja</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600">Bertanggung jawab dalam administrasi gereja dan koordinasi berbagai pelayanan. Memastikan seluruh kegiatan gereja berjalan dengan baik.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pengurus Lainnya -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Bendahara -->
+                <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center">
+                    <img src="https://picsum.photos/150/150" alt="Bu Phina" class="w-24 h-24 rounded-full object-cover mb-4">
+                    <h3 class="font-bold text-lg mb-1">Bu Phina</h3>
+                    <p class="text-primary text-sm mb-3">Bendahara</p>
+                    <p class="text-gray-600 text-center text-sm">Mengelola keuangan gereja dengan integritas dan transparansi.</p>
+                </div>
+                
+                <!-- Wakil Sekretariat -->
+                <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center">
+                    <img src="https://picsum.photos/150/150" alt="Ferry Ricardo" class="w-24 h-24 rounded-full object-cover mb-4">
+                    <h3 class="font-bold text-lg mb-1">Ferry Ricardo</h3>
+                    <p class="text-primary text-sm mb-3">Wakil Sekretariat</p>
+                    <p class="text-gray-600 text-center text-sm">Bertanggung jawab dalam administrasi gereja dan koordinasi berbagai pelayanan. Memastikan seluruh kegiatan gereja berjalan dengan baik.</p>
+                </div>
+                
+                <!-- Koordinator Ibadah -->
+                <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center">
+                    <img src="https://picsum.photos/150/150" alt="Pak Jefri" class="w-24 h-24 rounded-full object-cover mb-4">
+                    <h3 class="font-bold text-lg mb-1">Pak Jefri</h3>
+                    <p class="text-primary text-sm mb-3">Koordinator Ibadah</p>
+                    <p class="text-gray-600 text-center text-sm">Bertanggung jawab atas perencanaan dan kelancaran ibadah. Mengatur petugas liturgi, koordinasi tim pelayanan, dan memastikan ibadah berlangsung tertib dan berkesan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Jadwal Ibadah Section -->
+    <section id="jadwal-ibadah" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Jadwal Ibadah</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Mari bersama-sama memuji dan menyembah Tuhan.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden transition duration-300 hover:shadow-xl">
+                    <div class="bg-primary p-6 text-white">
+                        <h3 class="text-xl font-bold mb-1">Ibadah Minggu</h3>
+                        <p class="text-white/80">Ibadah Umum</p>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-primary/10 p-2 rounded-full mr-4">
+                                <i class="fas fa-clock text-primary"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold">Pukul 08.00 WIB</p>
+                                <p class="text-gray-500 text-sm">Ibadah Pertama</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center mb-4">
+                            <div class="bg-primary/10 p-2 rounded-full mr-4">
+                                <i class="fas fa-clock text-primary"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold">Pukul 10.30 WIB</p>
+                                <p class="text-gray-500 text-sm">Ibadah Kedua</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center mb-4">
+                            <div class="bg-primary/10 p-2 rounded-full mr-4">
+                                <i class="fas fa-clock text-primary"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold">Pukul 16.00 WIB</p>
+                                <p class="text-gray-500 text-sm">Ibadah Ketiga</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-primary/10 p-2 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt text-primary"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold">Gedung TRANKA</p>
+                                <p class="text-gray-500 text-sm">Lantai 1</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md overflow-hidden transition duration-300 hover:shadow-xl">
+                    <div class="bg-secondary p-6 text-white">
+                        <h3 class="text-xl font-bold mb-1">Ibadah Remaja</h3>
+                        <p class="text-white/80">Youth Service</p>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-secondary/10 p-2 rounded-full mr-4">
+                                <i class="fas fa-clock text-secondary"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold">Pukul 16.00 WIB</p>
+                                <p class="text-gray-500 text-sm">Setiap Sabtu</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center mb-4">
+                            <div class="bg-secondary/10 p-2 rounded-full mr-4">
+                                <i class="fas fa-users text-secondary"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold">Usia 12-17 Tahun</p>
+                                <p class="text-gray-500 text-sm">Terbuka untuk Umum</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-secondary/10 p-2 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt text-secondary"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold">Gedung TRANKA</p>
+                                <p class="text-gray-500 text-sm">Lantai 1</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md overflow-hidden transition duration-300 hover:shadow-xl">
+                    <div class="bg-indigo-700 p-6 text-white">
+                        <h3 class="text-xl font-bold mb-1">Ibadah Doa</h3>
+                        <p class="text-white/80">Prayer Meeting</p>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-indigo-100 p-2 rounded-full mr-4">
+                                <i class="fas fa-clock text-indigo-700"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold">Pukul 19.00 WIB</p>
+                                <p class="text-gray-500 text-sm">Setiap Rabu</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center mb-4">
+                            <div class="bg-indigo-100 p-2 rounded-full mr-4">
+                                <i class="fas fa-pray text-indigo-700"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold">Doa Syafaat</p>
+                                <p class="text-gray-500 text-sm">Untuk Semua Jemaat</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-indigo-100 p-2 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt text-indigo-700"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold">Gedung TRANKA</p>
+                                <p class="text-gray-500 text-sm">Lantai 1</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kegiatan Section -->
+    <section id="kegiatan" class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Kegiatan Gereja</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Berbagai kegiatan yang dapat Anda ikuti di GBI Empang Tiga.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-16">
+                <div class="flex">
+                    <div class="flex-shrink-0 mt-1">
+                        <div class="bg-primary/10 p-4 rounded-full">
+                            <i class="fas fa-bible text-primary text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="ml-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Kelompok Sel</h3>
+                        <p class="text-gray-600 mb-4">
+                            Kelompok kecil yang bertemu secara rutin untuk bersekutu, berdoa, dan mempelajari Firman Tuhan bersama. Terbuka untuk semua jemaat dan dilaksanakan di berbagai lokasi.
+                        </p>
+                        <a href="#" class="text-primary font-medium hover:text-secondary inline-flex items-center">
+                            Bergabung dengan Kelompok Sel
+                            <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="flex">
+                    <div class="flex-shrink-0 mt-1">
+                        <div class="bg-primary/10 p-4 rounded-full">
+                            <i class="fas fa-music text-primary text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="ml-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Pelayanan Musik</h3>
+                        <p class="text-gray-600 mb-4">
+                            Paduan suara, tim pujian, dan orchestra gereja yang melayani dalam ibadah minggu dan berbagai acara khusus. Terbuka untuk jemaat yang memiliki talenta di bidang musik.
+                        </p>
+                        <a href="#" class="text-primary font-medium hover:text-secondary inline-flex items-center">
+                            Informasi Pelayanan Musik
+                            <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="flex">
+                    <div class="flex-shrink-0 mt-1">
+                        <div class="bg-primary/10 p-4 rounded-full">
+                            <i class="fas fa-hands-helping text-primary text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="ml-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Pelayanan Sosial</h3>
+                        <p class="text-gray-600 mb-4">
+                            Kegiatan bantuan sosial untuk masyarakat sekitar, termasuk bantuan makanan, pengobatan gratis, dan pelatihan keterampilan bagi yang membutuhkan.
+                        </p>
+                        <a href="#" class="text-primary font-medium hover:text-secondary inline-flex items-center">
+                            Jadwal Pelayanan Sosial
+                            <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="flex">
+                    <div class="flex-shrink-0 mt-1">
+                        <div class="bg-primary/10 p-4 rounded-full">
+                            <i class="fas fa-baby text-primary text-xl"></i>
+                        </div>
+                    </div>
+                    <div class="ml-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">Sekolah Minggu</h3>
+                        <p class="text-gray-600 mb-4">
+                            Program pendidikan Alkitab untuk anak-anak usia 3-11 tahun yang dilaksanakan setiap hari Minggu bersamaan dengan ibadah umum. Mengajarkan nilai-nilai kristiani melalui cerita, lagu, dan aktivitas kreatif.
+                        </p>
+                        <a href="#" class="text-primary font-medium hover:text-secondary inline-flex items-center">
+                            Pendaftaran Sekolah Minggu
+                            <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeri Section -->
+    <section id="galeri" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Galeri Kegiatan</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Momen berharga dalam pelayanan dan persekutuan bersama.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div class="overflow-hidden rounded-lg shadow-md group">
+                    <img src="https://picsum.photos/400/400" alt="Ibadah Minggu" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="p-4 bg-white">
+                        <h3 class="font-semibold text-gray-800">Ibadah Minggu</h3>
+                        <p class="text-gray-500 text-sm">April 2025</p>
+                    </div>
+                </div>
+                
+                <div class="overflow-hidden rounded-lg shadow-md group">
+                    <img src="https://picsum.photos/400/400" alt="Natal Bersama" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="p-4 bg-white">
+                        <h3 class="font-semibold text-gray-800">Perayaan Natal</h3>
+                        <p class="text-gray-500 text-sm">Desember 2025</p>
+                    </div>
+                </div>
+                
+                <div class="overflow-hidden rounded-lg shadow-md group">
+                    <img src="https://picsum.photos/400/400" alt="Retreat Pemuda" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="p-4 bg-white">
+                        <h3 class="font-semibold text-gray-800">Retreat Pemuda</h3>
+                        <p class="text-gray-500 text-sm">Juli 2025</p>
+                    </div>
+                </div>
+                
+                <div class="overflow-hidden rounded-lg shadow-md group">
+                    <img src="https://picsum.photos/400/400" alt="Bakti Sosial" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="p-4 bg-white">
+                        <h3 class="font-semibold text-gray-800">Bakti Sosial</h3>
+                        <p class="text-gray-500 text-sm">September 2025</p>
+                    </div>
+                </div>
+                
+                <div class="overflow-hidden rounded-lg shadow-md group">
+                    <img src="https://picsum.photos/400/400" alt="Baptisan" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="p-4 bg-white">
+                        <h3 class="font-semibold text-gray-800">Baptisan Air</h3>
+                        <p class="text-gray-500 text-sm">Mei 2025</p>
+                    </div>
+                </div>
+                
+                <div class="overflow-hidden rounded-lg shadow-md group">
+                    <img src="https://picsum.photos/400/400" alt="Kelompok Sel" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="p-4 bg-white">
+                        <h3 class="font-semibold text-gray-800">Kelompok Sel</h3>
+                        <p class="text-gray-500 text-sm">Maret 2025</p>
+                    </div>
+                </div>
+                
+                <div class="overflow-hidden rounded-lg shadow-md group">
+                    <img src="https://picsum.photos/400/400" alt="Sekolah Minggu" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="p-4 bg-white">
+                        <h3 class="font-semibold text-gray-800">Sekolah Minggu</h3>
+                        <p class="text-gray-500 text-sm">Juni 2025</p>
+                    </div>
+                </div>
+                
+                <div class="overflow-hidden rounded-lg shadow-md group">
+                    <img src="https://picsum.photos/400/400" alt="KKR" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="p-4 bg-white">
+                        <h3 class="font-semibold text-gray-800">KKR</h3>
+                        <p class="text-gray-500 text-sm">Agustus 2025</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-flex items-center bg-primary hover:bg-secondary text-white font-semibold py-3 px-6 rounded-lg transition duration-300">
+                    Lihat Lebih Banyak Foto
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Kesaksian Jemaat</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Pengalaman dan berkat yang dialami oleh jemaat GBI Empang Tiga.</p>
+            </div>
+            
+            <div x-data="{activeSlide: 1}" class="relative max-w-4xl mx-auto">
+                <!-- Testimonial 1 -->
+                <div x-show="activeSlide === 1" class="bg-gray-50 rounded-xl p-8 md:p-10 shadow-lg">
+                    <div class="flex flex-col md:flex-row items-center md:items-start">
+                        <div class="mb-6 md:mb-0 md:mr-8">
+                            <div class="relative">
+                                <img src="https://picsum.photos/150/150" alt="Budi Santoso" class="w-20 h-20 rounded-full object-cover border-4 border-white shadow">
+                                <div class="absolute -bottom-2 -right-2 bg-primary text-white p-2 rounded-full">
+                                    <i class="fas fa-quote-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="italic text-gray-600 text-lg mb-6">"Saya mengalami pemulihan dari sakit yang sudah lama saya derita setelah didoakan dalam ibadah Kesembuhan Ilahi di GBI Empang Tiga. Puji Tuhan untuk pemulihan yang luar biasa ini!"</p>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Budi Santoso</h4>
+                                <p class="text-gray-500">Jemaat sejak 2015</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div x-show="activeSlide === 2" class="bg-gray-50 rounded-xl p-8 md:p-10 shadow-lg">
+                    <div class="flex flex-col md:flex-row items-center md:items-start">
+                        <div class="mb-6 md:mb-0 md:mr-8">
+                            <div class="relative">
+                                <img src="https://picsum.photos/150/150" alt="Maria Wijaya" class="w-20 h-20 rounded-full object-cover border-4 border-white shadow">
+                                <div class="absolute -bottom-2 -right-2 bg-primary text-white p-2 rounded-full">
+                                    <i class="fas fa-quote-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="italic text-gray-600 text-lg mb-6">"Keluarga kami mengalami berkat yang luar biasa setelah mengikuti kelas pemuridan di GBI Empang Tiga. Kami belajar mengelola keuangan keluarga sesuai prinsip Alkitab dan sekarang bisnis kami semakin berkembang."</p>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Maria Wijaya</h4>
+                                <p class="text-gray-500">Jemaat sejak 2018</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div x-show="activeSlide === 3" class="bg-gray-50 rounded-xl p-8 md:p-10 shadow-lg">
+                    <div class="flex flex-col md:flex-row items-center md:items-start">
+                        <div class="mb-6 md:mb-0 md:mr-8">
+                            <div class="relative">
+                                <img src="https://picsum.photos/150/150" alt="Anton Gunawan" class="w-20 h-20 rounded-full object-cover border-4 border-white shadow">
+                                <div class="absolute -bottom-2 -right-2 bg-primary text-white p-2 rounded-full">
+                                    <i class="fas fa-quote-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="italic text-gray-600 text-lg mb-6">"Sejak bergabung dengan komunitas pemuda di GBI Empang Tiga, hidup saya berubah. Saya menemukan teman-teman yang mendukung perjalanan iman saya dan melayani bersama untuk kemuliaan Tuhan."</p>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Anton Gunawan</h4>
+                                <p class="text-gray-500">Jemaat sejak 2020</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Navigation -->
+                <div class="flex justify-center mt-8">
+                    <button @click="activeSlide = 1" :class="{'bg-primary': activeSlide === 1, 'bg-gray-300': activeSlide !== 1}" class="w-3 h-3 rounded-full mx-1 focus:outline-none"></button>
+                    <button @click="activeSlide = 2" :class="{'bg-primary': activeSlide === 2, 'bg-gray-300': activeSlide !== 2}" class="w-3 h-3 rounded-full mx-1 focus:outline-none"></button>
+                    <button @click="activeSlide = 3" :class="{'bg-primary': activeSlide === 3, 'bg-gray-300': activeSlide !== 3}" class="w-3 h-3 rounded-full mx-1 focus:outline-none"></button>
+                </div>
+                
+                <!-- Arrows -->
+                <button @click="activeSlide = activeSlide === 1 ? 3 : activeSlide - 1" class="absolute top-1/2 -translate-y-1/2 -left-4 md:-left-10 bg-white rounded-full p-2 shadow-md focus:outline-none">
+                    <i class="fas fa-chevron-left text-gray-400 hover:text-primary"></i>
+                </button>
+                <button @click="activeSlide = activeSlide === 3 ? 1 : activeSlide + 1" class="absolute top-1/2 -translate-y-1/2 -right-4 md:-right-10 bg-white rounded-full p-2 shadow-md focus:outline-none">
+                    <i class="fas fa-chevron-right text-gray-400 hover:text-primary"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak Section -->
+    <section id="kontak" class="py-20 bg-gray-900 text-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Hubungi Kami</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-lg text-gray-300 max-w-3xl mx-auto">Kami siap melayani dan menjawab pertanyaan Anda.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div>
+                    <div class="bg-gray-800 rounded-xl p-8 h-full">
+                        <h3 class="text-2xl font-bold mb-6">Informasi Kontak</h3>
+                        
+                        <div class="flex items-start mb-6">
+                            <div class="bg-primary/20 p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1">Alamat</h4>
+                                <p class="text-gray-300">Jl. Raya Pasar Minggu No.17, RT.1/RW.1, Pejaten Timur, Ps. Minggu, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12520</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start mb-6">
+                            <div class="bg-primary/20 p-3 rounded-full mr-4">
+                                <i class="fas fa-phone-alt text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1">Telepon</h4>
+                                <p class="text-gray-300">(021) 1234-5678</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start mb-6">
+                            <div class="bg-primary/20 p-3 rounded-full mr-4">
+                                <i class="fas fa-envelope text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1">Email</h4>
+                                <p class="text-gray-300">info@gbiempangtiga.org</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-primary/20 p-3 rounded-full mr-4">
+                                <i class="fas fa-clock text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1">Jam Operasional Kantor</h4>
+                                <p class="text-gray-300">Senin - Jumat: 08.00 - 17.00 WIB</p>
+                                <p class="text-gray-300">Sabtu: 09.00 - 13.00 WIB</p>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-2xl font-bold mt-10 mb-6">Ikuti Kami</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-blue-600 hover:bg-blue-700 w-10 h-10 rounded-full flex items-center justify-center transition duration-300">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="bg-pink-600 hover:bg-pink-700 w-10 h-10 rounded-full flex items-center justify-center transition duration-300">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="bg-red-600 hover:bg-red-700 w-10 h-10 rounded-full flex items-center justify-center transition duration-300">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            <a href="#" class="bg-green-600 hover:bg-green-700 w-10 h-10 rounded-full flex items-center justify-center transition duration-300">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="bg-gray-800 rounded-xl p-8">
+                        <h3 class="text-2xl font-bold mb-6">Kirim Pesan</h3>
+                        <form>
+                            <div class="mb-4">
+                                <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Nama Lengkap</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="phone" class="block text-sm font-medium text-gray-300 mb-1">Nomor Telepon</label>
+                                <input type="tel" id="phone" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="message" class="block text-sm font-medium text-gray-300 mb-1">Pesan</label>
+                                <textarea id="message" rows="5" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-primary hover:bg-secondary text-white font-bold py-3 px-4 rounded-lg transition duration-300">
+                                Kirim Pesan
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <div class="h-96 w-full bg-gray-200">
+        <!-- Placeholder for Google Maps -->
+        <div class="w-full h-full flex items-center justify-center bg-gray-300">
+            <div class="text-center">
+                <i class="fas fa-map-marked-alt text-gray-500 text-5xl mb-3"></i>
+                <p class="text-gray-700 text-lg font-medium">Peta Lokasi GBI Empang Tiga</p>
+                <p class="text-gray-500">Jl. Empang Tiga No. 123, Jakarta Pusat</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+                <div class="md:col-span-1">
+                    <h3 class="text-xl font-bold mb-4">GBI Empang Tiga</h3>
+                    <p class="text-gray-400 mb-6">Melayani dengan kasih dan membawa kabar baik kepada semua orang.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Link Cepat</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#beranda" class="text-gray-400 hover:text-white transition duration-300">Beranda</a></li>
+                        <li><a href="#tentang-kami" class="text-gray-400 hover:text-white transition duration-300">Tentang Kami</a></li>
+                        <li><a href="#jadwal-ibadah" class="text-gray-400 hover:text-white transition duration-300">Jadwal Ibadah</a></li>
+                        <li><a href="#kegiatan" class="text-gray-400 hover:text-white transition duration-300">Kegiatan</a></li>
+                        <li><a href="#galeri" class="text-gray-400 hover:text-white transition duration-300">Galeri</a></li>
+                        <li><a href="#kontak" class="text-gray-400 hover:text-white transition duration-300">Kontak</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Pelayanan</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Ibadah Minggu</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Sekolah Minggu</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Ibadah Pemuda</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Kelompok Sel</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Konseling</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Pelayanan Sosial</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Kontak</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-400">Jl. Raya Pasar Minggu No.17, RT.1/RW.1, Pejaten Timur, Ps. Minggu, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12520</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-400">(021) 1234-5678</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope text-primary mt-1 mr-3"></i>
+                            <span class="text-gray-400">info@gbiempangtiga.org</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-10 pt-6 text-center text-gray-400">
+                <p>&copy; 2025 GBI Empang Tiga. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 bg-primary hover:bg-secondary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition duration-300 opacity-0 invisible">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
